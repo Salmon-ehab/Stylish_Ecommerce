@@ -4,10 +4,10 @@ import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
 import 'package:shop_ecommerce/core/widgets/custom_shopping_item_details.dart';
-import 'package:shop_ecommerce/feature/cart/presentation/views/cart_view.dart';
 import 'package:shop_ecommerce/feature/check_out/presentation/views/widget/check_out_widgets/address_widget.dart';
 import 'package:shop_ecommerce/feature/check_out/presentation/views/widget/check_out_widgets/delivery_address_widget.dart';
 import 'package:shop_ecommerce/core/widgets/shopping_list.dart';
+import 'package:shop_ecommerce/feature/my_orders/presentation/views/my_order_view.dart';
 
 class CheckOutBody extends StatelessWidget {
   const CheckOutBody({super.key});
@@ -42,7 +42,7 @@ class CheckOutBody extends StatelessWidget {
               left: 0,
               right: 0,
               child: CustomButton(label: "Place Order", onTap: () { 
-                MyNavigator.goTo(screen: ()=> const CartView());
+                MyNavigator.goToOff(screen: ()=> const MyOrderView(),isReplaceOffAll: false);
                },),
             ),
           ],

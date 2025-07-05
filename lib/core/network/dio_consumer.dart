@@ -58,7 +58,7 @@ class DioConsumer extends ApiConsumer {
         } catch (e) {
           CacheHelper.removeData(key: CacheKey.accessToken);
           CacheHelper.removeData(key: CacheKey.refreshToken);
-          MyNavigator.goTo(screen: () => const SignInView(), isReplace: true);
+          MyNavigator.goToOff(screen: () => const SignInView(), isReplaceOffAll: true);
           return handler.next(error);
         }
       }

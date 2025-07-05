@@ -12,7 +12,6 @@ class ActiveOrderRow extends StatelessWidget {
         CustomButtonOrder(
           title: "Cancel",
           height: 21,
-       
           onPressed: () {},
         ),
         CustomButtonOrder(

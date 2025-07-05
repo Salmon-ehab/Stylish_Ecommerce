@@ -47,6 +47,7 @@ class GetProductsBody extends StatelessWidget {
         } else if (state is GetProductSuccessState) {
           if (state.products.isEmpty) {
             return const SliverFillRemaining(
+              hasScrollBody: false,
               child: Center(child: Text("No  products found.")),
             );
           }
@@ -67,7 +68,7 @@ class GetProductsBody extends StatelessWidget {
                       padding:
                           const EdgeInsetsDirectional.only(end: 9, top: 11),
                       child: HeartIconWidget(
-                       productModel: state.products[index],
+                        productModel: state.products[index],
                       ),
                     )
                   ],
@@ -78,11 +79,13 @@ class GetProductsBody extends StatelessWidget {
           );
         } else if (state is GetProductErrorState) {
           return SliverFillRemaining(
+            hasScrollBody: false,
             child:
                 Center(child: Text("Failed to load products: ${state.error}")),
           );
         }
         return const SliverFillRemaining(
+          hasScrollBody: false,
           child: Center(child: Text("Please wait...")),
         );
       },

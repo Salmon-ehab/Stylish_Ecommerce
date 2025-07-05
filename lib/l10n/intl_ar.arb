@@ -37,5 +37,7 @@
    "validateEmailInvalid": "الرجاء إدخال عنوان بريد إلكتروني صالح.",
    "validatePhoneEmpty": "رقم الهاتف لا يمكن أن يكون فارغاً.",
    "validatePhoneDigitsOnly": "يجب أن يحتوي رقم الهاتف على أرقام فقط.",
-   "validatePhoneLength": "الرجاء إدخال طول رقم هاتف صحيح."
+   "validatePhoneLength": "الرجاء إدخال طول رقم هاتف صحيح.",
+   "language": "اللغات"
+
 }

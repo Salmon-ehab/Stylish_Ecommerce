@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:shop_ecommerce/feature/home/presentation/views/widgets/home_widgets/categories_list_view.dart';
+import 'package:shop_ecommerce/feature/home/presentation/views/widgets/trending_products/categories_list_view.dart';
 import 'package:shop_ecommerce/core/widgets/text_head_line.dart';
 import 'package:shop_ecommerce/feature/home/presentation/views/widgets/trending_products/get_products_body.dart';
 

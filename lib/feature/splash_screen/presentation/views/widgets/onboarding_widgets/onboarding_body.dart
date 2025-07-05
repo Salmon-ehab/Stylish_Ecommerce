@@ -31,9 +31,9 @@ class OnboardingBody extends StatelessWidget {
                         const Spacer(),
                         TextButton(
                             onPressed: () {
-                              MyNavigator.goTo(
+                              MyNavigator.goToOff(
                                   screen: () => const GetStartView(),
-                                  isReplace: true);
+                                  isReplaceOffAll: true);
                             },
                             child: Text(
                               S.of(context).skip,

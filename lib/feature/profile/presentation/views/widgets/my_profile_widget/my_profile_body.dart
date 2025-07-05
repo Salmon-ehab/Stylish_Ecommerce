@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/helper/validator/validator_form_field.dart';
+import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/core/widgets/bottom_nav_bar.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
@@ -27,9 +28,9 @@ class MyProfileBody extends StatelessWidget {
       } else if (state is UpdateSuccessState) {
         await UserCubit.get(context).getUserDataFromAPI();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Profile updated successfully")),
+          const SnackBar(content: Text("Profile updated successfully",style: TextStyle(color: Colors.green),)),
         );
-        MyNavigator.goTo(screen: const BottomNavBarWidget(), isReplace: true);
+        MyNavigator.goToOff(screen: const BottomNavBarWidget(), isReplaceOffAll: false);
       }
     }, builder: (context, state) {
       return Form(
@@ -58,7 +59,7 @@ class MyProfileBody extends StatelessWidget {
             SizedBox(height: MyResponsive.height(context, 75)),
             Padding(
               padding: const EdgeInsetsDirectional.only(start: 30, end: 18),
-              child: CustomButton(
+              child:state is UpdateLoadingState?const CircularProgressIndicator(color: AppColor.appNameColor,): CustomButton(
                   label: "Save",
                   onTap: UpdateProfileCubit.get(context).getUpdateProfile),
             )

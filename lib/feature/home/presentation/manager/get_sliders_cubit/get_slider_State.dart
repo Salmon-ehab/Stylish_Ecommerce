@@ -1,4 +1,3 @@
-
 import 'package:shop_ecommerce/feature/home/data/models/slider_model.dart';
 
 abstract class GetSliderState {}

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
-
 import '../../../../../core/utils/styles.dart';
 
 class LanguageSwitcher extends StatelessWidget {

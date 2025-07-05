@@ -13,7 +13,7 @@ class OnboardingCubit extends Cubit<int> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
-    emit(index);
+    emit(index); // index بتتحدث بقيمة ال state هنا ال  
   }
 
   void nextPage() {

@@ -80,7 +80,7 @@ class SignUpBody extends StatelessWidget {
             BlocConsumer<SignUpCubit, SignUpState>(
               listener: (context, state) {
                 if (state is SignUpSuccessState) {
-                  MyNavigator.goTo(screen: const SignInView(), isReplace: true);
+                  MyNavigator.goToOff(screen: const SignInView(), isReplaceOffAll: true);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text(
                     'Register Success',
@@ -101,7 +101,7 @@ class SignUpBody extends StatelessWidget {
                     start: MyResponsive.width(context, 29),
                     end: MyResponsive.width(context, 29),
                   ),
-                  child: CustomButton(
+                  child:state is SignUpLoadingState?const CircularProgressIndicator(color: AppColor.appNameColor,): CustomButton(
                       label: S.of(context).createAccount,
                       onTap: SignUpCubit.get(context).onPressedRegisterButton),
                 );

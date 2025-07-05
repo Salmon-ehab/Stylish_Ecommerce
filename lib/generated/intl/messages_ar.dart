@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "getStartTitle2": MessageLookupByLibrary.simpleMessage(
       "ابحث عنه هنا، اشتريه الآن!",
     ),
+    "language": MessageLookupByLibrary.simpleMessage("اللغات"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),

@@ -27,7 +27,6 @@ void filterProductsByCategory(int categoryId) {
   final filtered = _allProducts.where((p) =>
     p.categoryModel != null && p.categoryModel!.id == categoryId
   ).toList();
-  print(filtered);
   emit(GetProductSuccessState(products: filtered));
 }
 }

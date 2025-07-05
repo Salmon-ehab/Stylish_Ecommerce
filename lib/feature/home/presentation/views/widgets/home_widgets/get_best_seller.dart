@@ -53,6 +53,7 @@ class GetBestSeller extends StatelessWidget {
           } else if (state is GetBestSellerSuccessState) {
             if (state.products.isEmpty) {
               return const SliverFillRemaining(
+                hasScrollBody: false,
                 child: Center(child: Text("No best seller products found.")),
               );
             }
@@ -73,11 +74,13 @@ class GetBestSeller extends StatelessWidget {
             );
           } else if (state is GetBestSellerErrorState) {
             return SliverFillRemaining(
+              hasScrollBody: false,
               child: Center(
                   child: Text("Failed to load products: ${state.error}")),
             );
           }
           return const SliverFillRemaining(
+            hasScrollBody: false,
             child: Center(child: Text("Please wait...")),
           );
         },

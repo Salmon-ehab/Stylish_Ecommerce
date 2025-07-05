@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
@@ -46,8 +45,8 @@ class OnboardingNavigationText extends StatelessWidget {
         else
           TextButton(
             onPressed: () {
-              MyNavigator.goTo(
-                  screen: () => const GetStartView(), isReplace: true);
+              MyNavigator.goToOff(
+                  screen: () => const GetStartView(), isReplaceOffAll: true);
             },
             child: Text(
               S.of(context).GetStarted,

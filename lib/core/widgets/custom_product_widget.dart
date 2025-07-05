@@ -18,7 +18,7 @@ class CustomProductWidget extends StatelessWidget {
             screen: () => TrendingProductView(productModel: productModel));
       },
       child: Container(
-        height: MyResponsive.height(context, 305),
+        height: MyResponsive.height(context, 320),
         width: MyResponsive.width(context, 163),
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(

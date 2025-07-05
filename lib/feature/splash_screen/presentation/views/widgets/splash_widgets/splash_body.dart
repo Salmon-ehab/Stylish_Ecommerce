@@ -8,7 +8,7 @@ import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/core/widgets/bottom_nav_bar.dart';
-import 'package:shop_ecommerce/feature/auth/presentation/view/sign_in_view.dart';
+import 'package:shop_ecommerce/feature/auth/presentation/view/get_start_view.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_cubit.dart';
 import 'package:shop_ecommerce/feature/splash_screen/presentation/views/onboarding_view.dart';
 
@@ -25,15 +25,15 @@ class _SplashBodyState extends State<SplashBody> {
       CacheData.firstTime = CacheHelper.getData(key: CacheKey.firstTime);
       if (CacheData.firstTime != null) {
         CacheData.accessToken = CacheHelper.getData(key: CacheKey.accessToken);
-        if (CacheData.accessToken != null) {
+        if (CacheData.accessToken != null && CacheData.accessToken!.isNotEmpty) {
           UserCubit.get(context).getUserDataFromAPI();
-          MyNavigator.goTo(screen: () => const BottomNavBarWidget(), isReplace: true);
+          MyNavigator.goToOff(screen: () => const BottomNavBarWidget(), isReplaceOffAll: true);
         } else {
-          MyNavigator.goTo(screen: () => const SignInView(), isReplace: true);
+          MyNavigator.goToOff(screen: () => const GetStartView(), isReplaceOffAll: true);
         }
       } else // first time
       {
-        MyNavigator.goTo(screen: () => const OnboardingView(), isReplace: true);
+        MyNavigator.goToOff(screen: () => const OnboardingView(), isReplaceOffAll: true);
       }
     });
   }

@@ -37,5 +37,7 @@
     "validateEmailInvalid": "Please enter a valid email address.",
     "validatePhoneEmpty": "Phone number cannot be empty.",
     "validatePhoneDigitsOnly": "Phone number must contain digits only.",
-    "validatePhoneLength": "Please enter a valid phone number length."
+    "validatePhoneLength": "Please enter a valid phone number length.",
+    "language": "Language"
+
 }

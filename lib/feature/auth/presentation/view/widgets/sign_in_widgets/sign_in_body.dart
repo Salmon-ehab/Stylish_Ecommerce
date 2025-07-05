@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/helper/validator/validator_form_field.dart';
+import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/core/widgets/bottom_nav_bar.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
@@ -23,11 +24,14 @@ class SignInBody extends StatelessWidget {
       listener: (context, state) {
         if (state is SignInSuccessState) {
           UserCubit.get(context).getUserData(user: state.userResponseApi.user!);
-          
-          MyNavigator.goTo(
-              screen: () => const BottomNavBarWidget(), isReplace: true);
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Login Success',style: TextStyle(color: Colors.green),)));
+
+          MyNavigator.goToOff(
+              screen: () => const BottomNavBarWidget(), isReplaceOffAll: true);
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text(
+            'Login Success',
+            style: TextStyle(color: Colors.green),
+          )));
         }
         if (state is SignInFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -62,9 +66,13 @@ class SignInBody extends StatelessWidget {
                     start: MyResponsive.width(context, 29),
                     end: MyResponsive.width(context, 29),
                     top: MyResponsive.height(context, 56)),
-                child:state is SignInLoadingState?const CircularProgressIndicator(): CustomButton(
-                    label: S.of(context).login,
-                    onTap: SignInCubit.get(context).onLoginPressed),
+                child: state is SignInLoadingState
+                    ? const CircularProgressIndicator(
+                        color: AppColor.appNameColor,
+                      )
+                    : CustomButton(
+                        label: S.of(context).login,
+                        onTap: SignInCubit.get(context).onLoginPressed),
               )
             ],
           ),

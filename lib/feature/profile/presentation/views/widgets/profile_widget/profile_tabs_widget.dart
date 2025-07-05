@@ -30,11 +30,9 @@ class ProfileTabsWidget extends StatelessWidget {
           const Spacer(),
           IconButton(
               onPressed: onTap,
-              icon: Intl.defaultLocale == 'ar'
-                  ? SvgPicture.asset(SvgAssets.arrowIcon)
-                  : Transform.rotate(
-                      angle: 3.14,
-                      child: SvgPicture.asset(SvgAssets.arrowIcon)))
+              icon: Transform.rotate(
+                  angle: Intl.defaultLocale == 'ar' ? 0 : 3.14,
+                  child: SvgPicture.asset(SvgAssets.arrowIcon)))
         ],
       ),
     );

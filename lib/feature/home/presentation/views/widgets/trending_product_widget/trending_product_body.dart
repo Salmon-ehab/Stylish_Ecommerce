@@ -11,24 +11,27 @@ class TrendingProductBody extends StatelessWidget {
   final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.symmetric(horizontal: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 10),
-          CustomImageProduct(productModel: productModel),
-          const SizedBox(height: 36),
-           Text(productModel.name??"", style: Styles.text20W600),
-          const SizedBox(height: 18),
-          Text(
-              productModel.description ??"",
-              style: Styles.text14W400.copyWith(color: AppColor.blackColor)),
-          const SizedBox(height: 32),
-          const CustomSalaryWidget(),
-          const SizedBox(height: 49),
-          const CustomCartButton()
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 10),
+            CustomImageProduct(productModel: productModel),
+            const SizedBox(height: 36),
+            Text(productModel.name ?? "", style: Styles.text20W600),
+            const SizedBox(height: 18),
+            Text(productModel.description ?? "",
+                style:
+                    Styles.text14W400.copyWith(color: AppColor.blackColor)),
+            const SizedBox(height: 32),
+            const CustomSalaryWidget(),
+            const SizedBox(height: 30),
+             CustomCartButton(productModel:productModel),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }

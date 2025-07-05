@@ -20,8 +20,8 @@ class FavoriteBody extends StatelessWidget {
         child: BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
             if (state is UserLoadingState) {
-              return GridView.builder( // <--- تم التغيير من SliverGrid إلى GridView.builder
-                padding: EdgeInsets.zero, // <--- مهم: لإزالة أي padding إضافي
+              return GridView.builder( 
+                padding: EdgeInsets.zero, 
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -45,12 +45,12 @@ class FavoriteBody extends StatelessWidget {
               );
             } else if (state is UserSuccessState) {
               if (state.userModel.favoriteProducts!.isEmpty) {
-                return const Center( // <--- تم التغيير من SliverFillRemaining إلى Center
+                return const Center( 
                   child: Text("No Favorite products found."),
                 );
               }
-              return GridView.builder( // <--- تم التغيير من SliverGrid إلى GridView.builder
-                padding: EdgeInsets.zero, // <--- مهم: لإزالة أي padding إضافي
+              return GridView.builder( 
+                padding: EdgeInsets.zero, 
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -65,7 +65,7 @@ class FavoriteBody extends StatelessWidget {
                 },
               );
             } else if (state is UserErrorState) {
-              return Center( // <--- تم التغيير من SliverFillRemaining إلى Center
+              return Center( 
                 child: Text("Failed to load products: ${state.error}"),
               );
             }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/widgets/shopping_list.dart';
-import 'package:shop_ecommerce/core/widgets/custom_salary_container.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/views/widgets/cart_shop_item_body.dart';
+import 'package:shop_ecommerce/feature/order_details.dart/presentation/views/widgets/order_details_salary.dart';
 
 class OrderDetailsBody extends StatelessWidget {
   const OrderDetailsBody({super.key});
@@ -44,7 +44,7 @@ class OrderDetailsBody extends StatelessWidget {
               ],
             ),
             const Positioned(
-                bottom: 0, left: 0, right: 0, child: CustomSalaryContainer(isNeeded: false,))
+                bottom: 0, left: 0, right: 0, child: OrderDetailsSalary())
           ],
         ));
   }
