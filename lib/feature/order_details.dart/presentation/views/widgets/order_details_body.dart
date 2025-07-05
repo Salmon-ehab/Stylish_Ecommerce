@@ -39,7 +39,7 @@ class OrderDetailsBody extends StatelessWidget {
                const SliverToBoxAdapter(
                   child: SizedBox(height: 20)
                 ),
-                const ShoppingList(shoppingListBody: CartShopItemBody()),
+           //     const ShoppingList(shoppingListBody: CartShopItemBody()),
                 
               ],
             ),

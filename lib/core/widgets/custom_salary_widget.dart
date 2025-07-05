@@ -2,41 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 
-class CustomSalaryWidget extends StatefulWidget {
-  const CustomSalaryWidget({super.key, this.isNeeded = true});
+class CustomSalaryWidget extends StatelessWidget {
+  const CustomSalaryWidget(
+      {super.key,
+      this.isNeeded = true,
+      this.salary,
+      required this.quantity,
+      required this.onIncrease,
+      required this.onDecrease,  });
   final bool? isNeeded;
-  @override
-  State<CustomSalaryWidget> createState() => _CustomSalaryWidgetState();
-}
+  final int quantity;
+  final double? salary;
 
-class _CustomSalaryWidgetState extends State<CustomSalaryWidget> {
-  int _quantity = 1;
+  final VoidCallback onIncrease;
+  final VoidCallback onDecrease;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        widget.isNeeded == true
-            ? Text('${_quantity * 100} \$',
+        isNeeded == true && salary != null
+            ? Text('${quantity * salary!} \$',
                 style: Styles.text20W600.copyWith(color: AppColor.appNameColor))
             : const SizedBox.shrink(),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             InkWell(
-              onTap: () {
-                setState(() {
-                  if (_quantity > 1) {
-                    _quantity--;
-                  }
-                });
-              },
+              onTap: onDecrease,
               child: Container(
                 width: 24,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: _quantity == 1
+                  color: quantity == 1
                       ? AppColor.pinkColor2
                       : AppColor.appNameColor, // لون وردي فاتح
                   borderRadius: BorderRadius.circular(5),
@@ -49,16 +48,12 @@ class _CustomSalaryWidgetState extends State<CustomSalaryWidget> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 17),
-              child: Text('$_quantity',
+              child: Text('$quantity',
                   style:
                       Styles.text24W800.copyWith(fontWeight: FontWeight.w400)),
             ),
             InkWell(
-              onTap: () {
-                setState(() {
-                  _quantity++;
-                });
-              },
+              onTap: onIncrease,
               child: Container(
                 width: 24,
                 height: 24,

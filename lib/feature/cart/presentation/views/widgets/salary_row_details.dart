@@ -5,7 +5,7 @@ class SalaryRowDetails extends StatelessWidget {
   const SalaryRowDetails(
       {super.key, required this.title, required this.salary});
   final String title;
-  final String salary;
+  final double salary;
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -14,7 +14,7 @@ class OrderDetailsSalary extends StatelessWidget {
       decoration: const BoxDecoration(color: AppColor.backGroundColor),
       child:const Column(
         children: [
-           CustomSalaryContainer(),
+        //   CustomSalaryContainer(),
            Spacer(),
         ],
       ),

@@ -33,7 +33,7 @@ class CheckOutBody extends StatelessWidget {
                             .copyWith(color: AppColor.blackColor)),
                   ),
                   const SliverToBoxAdapter(child: SizedBox(height: 10)),
-                  const ShoppingList(shoppingListBody: CustomShoppingItemDetails()),
+                 // const ShoppingList(shoppingListBody: CustomShoppingItemDetails()),
                 ],
               ),
             ),

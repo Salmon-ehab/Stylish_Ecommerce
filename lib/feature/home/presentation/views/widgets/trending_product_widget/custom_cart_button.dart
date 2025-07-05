@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
@@ -19,11 +18,18 @@ class CustomCartButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         final quantity = QuantityCubit.get(context).state;
-        context.read<CartCubit>().addToCart(productModel, quantity: quantity);
-         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Product added to cart',style: TextStyle(color: Colors.green),)),
+        CartCubit.get(context).addToCart(productModel, quantity: quantity);
+          ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              '${quantity}x ${productModel.name ?? 'Item'} added to cart!',
+              style: const TextStyle(color:AppColor.appNameColor),
+            ),
+            backgroundColor: AppColor.pinkColor, // ممكن تعدلي اللون
+            duration: const Duration(seconds: 2),
+          ),
         );
-        MyNavigator.goToOff(screen: () => const CartView());
+        MyNavigator.goTo(screen: () => const CartView());
       },
       child: Container(
         height: 52,

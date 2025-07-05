@@ -8,7 +8,6 @@ import 'package:shop_ecommerce/feature/check_out/presentation/views/check_out_vi
 
 class CustomSalaryCart extends StatelessWidget {
   const CustomSalaryCart({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +16,7 @@ class CustomSalaryCart extends StatelessWidget {
       decoration: const BoxDecoration(color: AppColor.backGroundColor),
       child: Column(
         children: [
-         const CustomSalaryContainer(),
+          CustomSalaryContainer(),
         const Spacer(),
           Padding(
             padding: const EdgeInsetsDirectional.only(

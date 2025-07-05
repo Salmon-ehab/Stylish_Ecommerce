@@ -8,7 +8,7 @@ class CartCubit extends Cubit<CartState> {
 
   final List<CartItemModel> _cartItems = [];
   static CartCubit get(context) => BlocProvider.of(context);
-
+  
   void addToCart(ProductModel productModel, {int quantity = 1}) {
     final int index = _cartItems
         .indexWhere((item) => item.productModel.id == productModel.id);
@@ -32,7 +32,7 @@ class CartCubit extends Cubit<CartState> {
       _cartItems[index] =
           currentItem.copyWith(quantity: _cartItems[index].quantity + 1);
       emit(CartUpdateState(List.from(
-          _cartItems))); // برجع نفس الليست القديمة علشان البلوك ياخد باله ويرفرش هو بنفسه
+          _cartItems))); // برجع نسخة جديدة علشان البلوك ياخد باله ويرفرش هو بنفسه
     }
   }
 

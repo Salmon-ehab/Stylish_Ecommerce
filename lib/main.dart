@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shop_ecommerce/core/network/dio_consumer.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/constant.dart';
+import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:shop_ecommerce/feature/profile/data/repo/get_data_repo/get_data_imple.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_cubit.dart';
@@ -36,6 +37,9 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (_) => CartCubit(),
+        ),
         BlocProvider<UserCubit>(
           create: (context) =>
               UserCubit(GetDataRepoImple(DioConsumer(dio: Dio()))),

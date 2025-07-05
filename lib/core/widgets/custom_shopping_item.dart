@@ -6,8 +6,10 @@ import 'package:shop_ecommerce/core/widgets/custom_image_item.dart';
 import 'package:shop_ecommerce/core/widgets/total_order_widget.dart';
 
 class CustomShoppingItem extends StatelessWidget {
-  const CustomShoppingItem({super.key, required this.shoppingDetailsBody});
+  const CustomShoppingItem({super.key, required this.shoppingDetailsBody, required this.image, required this.totalItemOrder});
   final Widget shoppingDetailsBody;
+  final String image;
+  final double totalItemOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class CustomShoppingItem extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomImageItem(),
+                 CustomImageItem(image: image),
                 Expanded(child: shoppingDetailsBody)
               ],
             ),
@@ -47,7 +49,7 @@ class CustomShoppingItem extends StatelessWidget {
           const Divider(
             color: Color(0xffBBBBBB),
           ),
-          const TotalOrderWidget()
+           TotalOrderWidget(totalOrder: totalItemOrder,)
         ],
       ),
     );
