@@ -7,7 +7,8 @@ import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart
 import 'package:shop_ecommerce/feature/cart/presentation/views/widgets/salary_row_details.dart';
 
 class CustomSalaryContainer extends StatelessWidget {
-  const CustomSalaryContainer({super.key});
+  const CustomSalaryContainer({super.key, required this.totalSalary});
+  final double totalSalary;
   @override
   Widget build(BuildContext context) {
     return  BlocBuilder<CartCubit,CartState>(
@@ -18,7 +19,7 @@ class CustomSalaryContainer extends StatelessWidget {
             color: Color(0xffCACACA),
           ),
           const SizedBox(height: 18),
-           SalaryRowDetails(title: "Subtotal", salary:CartCubit.get(context).subtotal),
+           SalaryRowDetails(title: "Subtotal", salary:totalSalary),
           const SalaryRowDetails(title: "Tax and Fees", salary: 3.00),
           const SalaryRowDetails(title: "Delivery Fee", salary: 2.00),
           const Divider(
@@ -30,7 +31,7 @@ class CustomSalaryContainer extends StatelessWidget {
             children: [
               const Text("Total Order", style: Styles.text17W500),
               Text(
-                "\$ ${CartCubit.get(context).subtotal+5.00}",
+                "₹ ${totalSalary+5.00}",
                 style: Styles.text16W600.copyWith(color: AppColor.appNameColor),
               )
             ],

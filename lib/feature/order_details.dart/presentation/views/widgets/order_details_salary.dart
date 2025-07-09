@@ -4,7 +4,8 @@ import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/widgets/custom_salary_container.dart';
 
 class OrderDetailsSalary extends StatelessWidget {
-  const OrderDetailsSalary({super.key});
+  const OrderDetailsSalary({super.key, required this.totalSalary});
+  final double totalSalary;
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +13,10 @@ class OrderDetailsSalary extends StatelessWidget {
       height: MyResponsive.height(context, 288),
       width: double.infinity,
       decoration: const BoxDecoration(color: AppColor.backGroundColor),
-      child:const Column(
+      child: Column(
         children: [
-        //   CustomSalaryContainer(),
-           Spacer(),
+          CustomSalaryContainer(totalSalary: totalSalary),
+          const Spacer(),
         ],
       ),
     );

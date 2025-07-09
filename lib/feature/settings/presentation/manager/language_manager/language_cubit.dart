@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_ecommerce/core/cache/cache_helper.dart';
+import 'package:shop_ecommerce/core/cache/cache_key.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
   LanguageCubit() : super(LanguageState(const Locale("en")));
+  static LanguageCubit get(context) => BlocProvider.of(context);
 
-  Future<void> getSavedLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final langCode = prefs.getString('lang') ?? "en";
+  getSavedLanguage() {
+    final langCode = CacheHelper.getData(key: CacheKey.language);
     emit(LanguageState(Locale(langCode)));
   }
 
-  Future<void> changeLanguage(String langCode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('lang', langCode);
+  changeLanguage(String langCode) {
+    CacheHelper.saveData(key: CacheKey.language, value: langCode);
     emit(LanguageState(Locale(langCode)));
   }
 }

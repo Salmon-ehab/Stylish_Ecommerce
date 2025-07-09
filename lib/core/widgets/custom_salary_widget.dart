@@ -23,7 +23,7 @@ class CustomSalaryWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         isNeeded == true && salary != null
-            ? Text('${quantity * salary!} \$',
+            ? Text('₹ ${quantity * salary!} ',
                 style: Styles.text20W600.copyWith(color: AppColor.appNameColor))
             : const SizedBox.shrink(),
         Row(

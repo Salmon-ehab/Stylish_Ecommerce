@@ -11,10 +11,10 @@ class TotalOrderWidget extends StatelessWidget {
     return   Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Total Order (1)   :",
+              Text("Total Order   :",
                   style:
                       Styles.text12W500.copyWith(color: AppColor.blackColor)),
-              Text("\$ $totalOrder",
+              Text("₹ $totalOrder",
                   style: Styles.text12W600.copyWith(color: AppColor.blackColor))
             ],
           );

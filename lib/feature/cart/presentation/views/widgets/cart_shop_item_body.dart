@@ -36,11 +36,11 @@ class CartShopItemBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("\$ ${cartItemModel.productModel.price}",
+                Text("₹ ${cartItemModel.productModel.price}",
                     style:
                         Styles.text16W600.copyWith(color: AppColor.blackColor)),
                 const SizedBox(width: 5),
-                Text("\$ 64.00",
+                Text("₹ 64.00",
                     style: Styles.text12W500.copyWith(
                       color: AppColor.grey9,
                       decoration: TextDecoration.lineThrough,

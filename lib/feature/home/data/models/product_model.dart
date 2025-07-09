@@ -17,7 +17,7 @@ class ProductModel {
   final String? description;
   final int? id;
   final String? imagePath;
-  final bool? isFavorite;
+   bool? isFavorite;
   final String? name;
   final CategoryModel? categoryModel;
   final double? price;

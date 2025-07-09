@@ -12,4 +12,11 @@ class CartItemModel {
   } // بنعمل ميثود علشان تقدر تعمل نسخة جديدة وتعدل علي الكائن بالكمية
 
   double get totalPrice => (productModel.price ?? 0) * quantity;
+
+  Map<String, dynamic> toJsonForPlaceOrder() {
+    return {
+      'product_id': productModel.id, 
+      'quantity': quantity,
+    };
+  }
 }

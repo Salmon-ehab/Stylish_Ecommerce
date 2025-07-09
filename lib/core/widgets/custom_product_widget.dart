@@ -30,7 +30,7 @@ class CustomProductWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
+          productModel.imagePath!=null?  ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
                 productModel.imagePath!,
@@ -38,7 +38,7 @@ class CustomProductWidget extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-            ),
+            ):const SizedBox.shrink(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsetsDirectional.all(8.0),
@@ -46,9 +46,14 @@ class CustomProductWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(productModel.name!, style: Styles.text16W500),
                     Text(
-                      productModel.description!,
+                      productModel.name??"",
+                      style: Styles.text16W500,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      productModel.description??"",
                       style: Styles.text10W400
                           .copyWith(color: AppColor.blackColor),
                       maxLines: 2,
@@ -59,7 +64,7 @@ class CustomProductWidget extends StatelessWidget {
                             .copyWith(color: AppColor.blackColor)),
                     Row(
                       children: [
-                        CustomRatingWidget(rating: productModel.rating!),
+                        CustomRatingWidget(rating: productModel.rating??0),
                         const SizedBox(width: 4),
                         Text(
                           "1,52,344",

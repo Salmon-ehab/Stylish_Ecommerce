@@ -9,6 +9,9 @@ import 'package:shop_ecommerce/core/utils/constant.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:shop_ecommerce/feature/profile/data/repo/get_data_repo/get_data_imple.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_cubit.dart';
+import 'package:shop_ecommerce/feature/search/data/repo/search_repo_imple.dart';
+import 'package:shop_ecommerce/feature/search/presentation/manager/search_cubit.dart';
+import 'package:shop_ecommerce/feature/search/presentation/views/widgets/search_widget.dart/search_body.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_state.dart';
 import 'package:shop_ecommerce/feature/splash_screen/presentation/views/splash_view.dart';
@@ -19,12 +22,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
 
-  final languageCubit = LanguageCubit();
-  await languageCubit.getSavedLanguage();
-
   runApp(
-    BlocProvider<LanguageCubit>.value(
-      value: languageCubit,
+    BlocProvider(
+      create: (_) => LanguageCubit(),
       child: const ShopApp(),
     ),
   );
@@ -44,10 +44,17 @@ class ShopApp extends StatelessWidget {
           create: (context) =>
               UserCubit(GetDataRepoImple(DioConsumer(dio: Dio()))),
         ),
+        BlocProvider<UserCubit>(
+          create: (context) =>
+              UserCubit(GetDataRepoImple(DioConsumer(dio: Dio()))),
+        ),
+        BlocProvider(
+            create: (_) => SearchCubit(
+                SearchRepoImple(apiConsumer: DioConsumer(dio: Dio()))),
+            child: const SearchBody()),
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
-          print("rokaaaaaaa:${state.locale}");
           return GetMaterialApp(
             locale: state.locale,
             supportedLocales: S.delegate.supportedLocales,

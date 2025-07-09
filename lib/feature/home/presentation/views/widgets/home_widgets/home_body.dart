@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:shop_ecommerce/feature/home/presentation/views/widgets/home_widgets/carousel_widget.dart';
 import 'package:shop_ecommerce/feature/home/presentation/views/widgets/home_widgets/get_best_seller.dart';
-import 'package:shop_ecommerce/feature/search/presentation/views/widgets/search_widget.dart/search_widget.dart';
 import 'package:shop_ecommerce/core/widgets/text_head_line.dart';
+import 'package:shop_ecommerce/feature/search/presentation/views/widgets/search_widget.dart/search_widget.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -14,7 +14,7 @@ class HomeBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SearchWidget()),
+            SliverToBoxAdapter(child: SearchWidget(readOnly: true)),
             SliverToBoxAdapter(child: SizedBox(height: 25)),
             SliverToBoxAdapter(child: CarouselWidget()),
             SliverToBoxAdapter(child: SizedBox(height: 32)),

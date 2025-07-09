@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_ecommerce/core/models/shopping_model.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 
 class CustomShoppingItemDetails extends StatelessWidget {
-  const CustomShoppingItemDetails({super.key});
+  final ShoppingModel shoppingModel;
+  const CustomShoppingItemDetails({super.key, required this.shoppingModel});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,11 @@ class CustomShoppingItemDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Women’s Casual Wear",
+          Text(shoppingModel.itemName,
               style: Styles.text14W600.copyWith(color: AppColor.blackColor)),
           Row(
             children: [
-              Text("4.8",
+              Text("${shoppingModel.itemRating}",
                   style:
                       Styles.text12W500.copyWith(color: AppColor.blackColor)),
               const SizedBox(width: 5),
@@ -31,17 +33,17 @@ class CustomShoppingItemDetails extends StatelessWidget {
               ),
             ],
           ),
-          Text("1 item",
+          Text("${shoppingModel.itemQuantity} item",
               style: Styles.text12W500.copyWith(color: AppColor.blackColor)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$ 34.00",
+              Text("₹ ${shoppingModel.itemPrice}",
                   style:
                       Styles.text16W600.copyWith(color: AppColor.blackColor)),
                  const Spacer(),
 
-              Text("\$ 64.00",
+              Text("₹ 64.00",
                   style: Styles.text12W500.copyWith(
                     color: AppColor.grey9,
                     decoration: TextDecoration.lineThrough,

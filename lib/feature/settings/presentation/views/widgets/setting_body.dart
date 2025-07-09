@@ -57,7 +57,7 @@ class _SettingBodyState extends State<SettingBody> {
                     isEnglishSelected: isEnglish,
                     onToggle: () {
                       final newLang = isEnglish ? 'ar' : 'en';
-                      context.read<LanguageCubit>().changeLanguage(newLang);
+                      LanguageCubit.get(context).changeLanguage(newLang);
                     },
                   );
                 }),

@@ -10,7 +10,7 @@ class CustomButtonOrder extends StatelessWidget {
     required this.title,
     this.height = 26,
   });
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final String title;
   final double? height;
   @override

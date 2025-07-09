@@ -22,11 +22,11 @@ abstract class MyNavigator {
     }
   }
 
-  static goTo(
+  static Future<T?>? goTo<T>(
       {required screen,
       Transition transition = Transition.rightToLeftWithFade,
       Duration? duration}) {
-    Get.to(screen,
+  return  Get.to<T>(screen,
         transition: Intl.defaultLocale == "en"
             ? Transition.rightToLeftWithFade
             : Transition.leftToRightWithFade,

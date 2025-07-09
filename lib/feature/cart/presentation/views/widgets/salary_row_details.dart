@@ -15,7 +15,7 @@ class SalaryRowDetails extends StatelessWidget {
         children: [
           Text(title, style: Styles.text16400),
           Text(
-            "\$ $salary",
+            "₹ $salary",
             style: Styles.text16W600,
           )
         ],

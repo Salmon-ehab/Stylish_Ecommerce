@@ -119,6 +119,11 @@ abstract class Styles {
     fontWeight: FontWeight.w800,
     color: AppColor.blackColor,
   );
+   static const TextStyle text24W600 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: AppColor.appNameColor,
+  );
 
   static const TextStyle text34W600 = TextStyle(
     fontSize: 34,

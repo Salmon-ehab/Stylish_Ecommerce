@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
+import 'package:shop_ecommerce/feature/search/presentation/manager/search_cubit.dart';
+import 'package:shop_ecommerce/feature/search/presentation/views/search_view.dart';
 
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({super.key});
+  final bool? readOnly;
+  const SearchWidget({super.key, this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController textEditingController =TextEditingController();
+    final mySearchCubit = SearchCubit.get(context);
     return Container(
         height: MyResponsive.height(context, 40),
         width: double.infinity,
@@ -25,11 +29,23 @@ class SearchWidget extends StatelessWidget {
             ],
             color: AppColor.white),
         child: TextFormField(
-          controller: textEditingController,
+          readOnly: readOnly!,
+          onChanged: (value) {
+            if (!readOnly! && value.trim().isNotEmpty) {
+              mySearchCubit.getSearchItems(quiery: value.trim());
+            }
+          },
+          onTap: () async {
+            if (readOnly == true) {
+              await MyNavigator.goTo(screen: () => const SearchView());
+            }
+            mySearchCubit.clearTextEditingController();
+          },
+          controller: mySearchCubit.textEditingController,
           style: const TextStyle(color: Colors.black87),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(
-                vertical: 0.0, horizontal: 0.0), // قم بتعديل هذا
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
             prefixIcon: SvgPicture.asset(
               SvgAssets.searchIcon,
               height: 16,
@@ -37,7 +53,6 @@ class SearchWidget extends StatelessWidget {
               fit: BoxFit.scaleDown,
             ),
             hintText: 'Search any Product..',
-
             hintStyle: const TextStyle(
               color: AppColor.grey5,
               fontSize: 14,
