@@ -48,19 +48,30 @@ class _SettingBodyState extends State<SettingBody> {
               children: [
                 const Text("Language", style: Styles.text18W500),
                 BlocBuilder<LanguageCubit, LanguageState>(
-                    builder: (context, state) {
-                  final isEnglish = state.locale.languageCode == 'en';
-                  print("salmaaaaa:$isEnglish");
-                  print("salmaaaaa:${state.locale.languageCode}");
+                  builder: (context, state) {
+                    final cubit = LanguageCubit.get(context);
+                  print("lang:${state.locale.languageCode}");
+                    return LanguageSwitcher(
+                      isEnglishSelected: state.locale.languageCode == 'en',
+                      onToggle: () => cubit.toggleLanguage(),
+                    );
+                  },
+                )
 
-                  return LanguageSwitcher(
-                    isEnglishSelected: isEnglish,
-                    onToggle: () {
-                      final newLang = isEnglish ? 'ar' : 'en';
-                      LanguageCubit.get(context).changeLanguage(newLang);
-                    },
-                  );
-                }),
+                // BlocBuilder<LanguageCubit, LanguageState>(
+                //     builder: (context, state) {
+                //   final isEnglish = state.locale.languageCode == 'en';
+                //   print("salmaaaaa:$isEnglish");
+                //   print("salmaaaaa:${state.locale.languageCode}");
+
+                //   return LanguageSwitcher(
+                //     isEnglishSelected: isEnglish,
+                //     onToggle: () {
+                //       final newLang = isEnglish ? 'ar' : 'en';
+                //       LanguageCubit.get(context).changeLanguage(newLang);
+                //     },
+                //   );
+                // }),
               ],
             ),
             const Spacer(),

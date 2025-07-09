@@ -57,6 +57,8 @@ dependencies:
   skeletonizer: ^1.4.3
   lottie: ^3.2.0
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

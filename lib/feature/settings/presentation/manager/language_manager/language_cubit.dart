@@ -10,11 +10,18 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   getSavedLanguage() {
     final langCode = CacheHelper.getData(key: CacheKey.language);
-    emit(LanguageState(Locale(langCode)));
+    if (langCode != null) {
+      emit(LanguageState(Locale(langCode)));
+    }
   }
+void toggleLanguage() {
+  final newLang = state.locale.languageCode == 'en' ? 'ar' : 'en';
+  CacheHelper.saveData(key: CacheKey.language, value: newLang);
+  emit(LanguageState(Locale(newLang)));
+}
 
-  changeLanguage(String langCode) {
-    CacheHelper.saveData(key: CacheKey.language, value: langCode);
-    emit(LanguageState(Locale(langCode)));
-  }
+  // changeLanguage(String langCode) {
+  //   CacheHelper.saveData(key: CacheKey.language, value: langCode);
+  //   emit(LanguageState(Locale(langCode)));
+  // }
 }

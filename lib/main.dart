@@ -22,6 +22,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
 
+  final languageCubit = LanguageCubit();
+  languageCubit.getSavedLanguage();
+
   runApp(
     BlocProvider(
       create: (_) => LanguageCubit(),
