@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:shop_ecommerce/core/cache/cache_data.dart';
 import 'package:shop_ecommerce/core/cache/cache_helper.dart';
 import 'package:shop_ecommerce/core/cache/cache_key.dart';
+import 'package:shop_ecommerce/core/constants/global_flag.dart';
 import 'package:shop_ecommerce/core/errors/app_exception.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/network/api_consumer.dart';
@@ -56,9 +57,15 @@ class DioConsumer extends ApiConsumer {
           final response = await dio.fetch(options);
           return handler.resolve(response);
         } catch (e) {
-          CacheHelper.removeData(key: CacheKey.accessToken);
-          CacheHelper.removeData(key: CacheKey.refreshToken);
-          MyNavigator.goToOff(screen: () => const SignInView(), isReplaceOffAll: true);
+          if (!isNavigatedToLogin) {
+            isNavigatedToLogin = true;
+            await CacheHelper.removeData(key: CacheKey.accessToken);
+            await CacheHelper.removeData(key: CacheKey.refreshToken);
+
+            MyNavigator.goToOff(
+                screen: () => const SignInView(), isReplaceOffAll: true);
+          }
+
           return handler.next(error);
         }
       }

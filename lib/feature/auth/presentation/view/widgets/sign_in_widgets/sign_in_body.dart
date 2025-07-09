@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_ecommerce/core/constants/global_flag.dart';
+import 'package:shop_ecommerce/core/helper/app_snack_bar.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/helper/validator/validator_form_field.dart';
@@ -23,22 +25,16 @@ class SignInBody extends StatelessWidget {
         child: BlocConsumer<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
+          isNavigatedToLogin = false;
           UserCubit.get(context).getUserData(user: state.userResponseApi.user!);
-
           MyNavigator.goToOff(
               screen: () => const BottomNavBarWidget(), isReplaceOffAll: true);
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text(
-            'Login Success',
-            style: TextStyle(color: Colors.green),
-          )));
+          AppSnackBar.showSuccess(
+              context: context,
+              message: "Successfully logged in. Let's get started!");
         }
         if (state is SignInFailureState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(
-            state.error,
-            style: const TextStyle(color: Colors.red),
-          )));
+          AppSnackBar.showError(context: context, message: state.error);
         }
       },
       builder: (context, state) {

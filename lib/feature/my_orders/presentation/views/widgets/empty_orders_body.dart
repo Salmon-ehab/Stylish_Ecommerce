@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
-import 'package:shop_ecommerce/core/utils/constant.dart';
+import 'package:shop_ecommerce/core/constants/constant_fonts.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 
 class EmptyOrdersBody extends StatelessWidget {

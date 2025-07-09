@@ -10,6 +10,7 @@ import 'package:shop_ecommerce/feature/settings/presentation/manager/delete_user
 import 'package:shop_ecommerce/feature/settings/presentation/manager/delete_user_cubit/delete_user_state.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_state.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 import 'language_switch.dart';
 
@@ -46,7 +47,7 @@ class _SettingBodyState extends State<SettingBody> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Language", style: Styles.text18W500),
+                 Text(S.of(context).language, style: Styles.text18W500),
                 BlocBuilder<LanguageCubit, LanguageState>(
                   builder: (context, state) {
                     final cubit = LanguageCubit.get(context);

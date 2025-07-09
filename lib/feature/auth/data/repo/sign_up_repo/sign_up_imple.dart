@@ -32,7 +32,7 @@ class SignUpImple implements SignUpRepo {
       final error = AppException.fromDio(e);
       return Left(Failure(error.message));
     } catch (e) {
-      return Left(Failure("Username already exists"));
+      return Left(Failure(e.toString()));
     }
   }
 }

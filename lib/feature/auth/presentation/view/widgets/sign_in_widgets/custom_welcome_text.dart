@@ -11,7 +11,7 @@ class CustomWelcomeText extends StatelessWidget {
     return Padding(
       padding: EdgeInsetsDirectional.only(
           start: 32,
-          end: MyResponsive.width(context, 158),
+          end: MyResponsive.width(context, 140),
           top: MyResponsive.height(context, 25),
           bottom: MyResponsive.height(context, 33)),
       child:  Text(

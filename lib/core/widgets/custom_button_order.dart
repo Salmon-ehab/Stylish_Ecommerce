@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
-import 'package:shop_ecommerce/core/utils/constant.dart';
+import 'package:shop_ecommerce/core/constants/constant_fonts.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 
 class CustomButtonOrder extends StatelessWidget {

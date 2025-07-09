@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:shop_ecommerce/core/network/dio_consumer.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
-import 'package:shop_ecommerce/core/utils/constant.dart';
+import 'package:shop_ecommerce/core/constants/constant_fonts.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:shop_ecommerce/feature/profile/data/repo/get_data_repo/get_data_imple.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_cubit.dart';
@@ -27,8 +28,10 @@ void main() async {
 
   runApp(
     BlocProvider(
-      create: (_) => LanguageCubit(),
-      child: const ShopApp(),
+      create: (_) => languageCubit,
+      child: DevicePreview(builder: (_) {
+        return const ShopApp();
+      }),
     ),
   );
 }
@@ -47,10 +50,6 @@ class ShopApp extends StatelessWidget {
           create: (context) =>
               UserCubit(GetDataRepoImple(DioConsumer(dio: Dio()))),
         ),
-        BlocProvider<UserCubit>(
-          create: (context) =>
-              UserCubit(GetDataRepoImple(DioConsumer(dio: Dio()))),
-        ),
         BlocProvider(
             create: (_) => SearchCubit(
                 SearchRepoImple(apiConsumer: DioConsumer(dio: Dio()))),
@@ -58,6 +57,7 @@ class ShopApp extends StatelessWidget {
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
+          print(state.locale);
           return GetMaterialApp(
             locale: state.locale,
             supportedLocales: S.delegate.supportedLocales,

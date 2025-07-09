@@ -4,7 +4,7 @@ import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/helper/validator/validator_form_field.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
-import 'package:shop_ecommerce/core/utils/constant.dart';
+import 'package:shop_ecommerce/core/constants/constant_fonts.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
