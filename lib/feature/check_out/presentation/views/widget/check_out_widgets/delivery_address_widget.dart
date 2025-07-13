@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class DeliveryAddressWidget extends StatelessWidget {
   const DeliveryAddressWidget({super.key});
@@ -13,7 +14,7 @@ class DeliveryAddressWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(SvgAssets.locationIcon, height: 15, width: 12,color: AppColor.blackColor,),
        const SizedBox(width: 8),
-        Text("Delivery Address",style: Styles.text14W600.copyWith(color: AppColor.blackColor))
+        Text(S.of(context).deliveryAdd,style: Styles.text14W600.copyWith(color: AppColor.blackColor))
       ],
     );
   }

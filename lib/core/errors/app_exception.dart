@@ -33,7 +33,7 @@ class AppException implements Exception {
       case 400:
         return AppException("طلب غير صالح.");
       case 401:
-        return AppException("غير مصرح لك.");
+        return AppException("انتهت صلاحية الجلسة.");
       case 403:
         return AppException("تم رفض الوصول.");
       case 404:

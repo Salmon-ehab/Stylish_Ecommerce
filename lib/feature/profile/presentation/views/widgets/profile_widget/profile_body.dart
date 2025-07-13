@@ -7,6 +7,7 @@ import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/u
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_state.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/views/widgets/profile_widget/custom_profile_image.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/views/widgets/profile_widget/profile_tabs.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -20,7 +21,7 @@ class ProfileBody extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(height: 23),
-                const TextHeadLine(title: "Profile"),
+                 TextHeadLine(title: S.of(context).profile),
                 const SizedBox(height: 32),
                 CustomProfileImage(
                     image: state is UserSuccessState &&

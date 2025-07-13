@@ -44,7 +44,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               ),
             );
           } else if (state is GetSliderErrorState) {
-            return SizedBox( // استخدام SizedBox لضمان وجود ارتفاع محدد
+            return SizedBox(
               height: MyResponsive.height(context, 189),
               child: Center(child: Text('Error: ${state.error}')),
             );
@@ -93,7 +93,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
           } else {
             return SizedBox(
               height: MyResponsive.height(context, 189),
-              child: const Center(child: CircularProgressIndicator()),
+              child: const Center(child: Text("Unexpected state")),
             );
           }
         },

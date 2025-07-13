@@ -17,11 +17,8 @@ class SearchRepoImple implements SearchRepo {
     try {
       final response = await apiConsumer.get("${EndPoints.searchItem}$quiery",
           isProtected: true);
-      print("searchhhhhhhh1 :$response");
       final List data = response["products"];
       final products = data.map((e) => ProductModel.fromJson(e)).toList();
-      print("searchhhhhhhh2 :$products");
-
       return Right(products);
     } on DioException catch (e) {
       final error = AppException.fromDio(e);

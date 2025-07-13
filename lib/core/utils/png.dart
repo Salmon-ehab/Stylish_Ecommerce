@@ -36,4 +36,5 @@ abstract class PngAssets {
 
    // Full path:assets/png/shop_item.png
   static const String shopItemImage = '${_imagePath}shop_item.png';
+
 }

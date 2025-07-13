@@ -6,6 +6,7 @@ import 'package:shop_ecommerce/feature/my_orders/presentation/manager/get_order_
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/empty_orders_body.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/order_widget.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/status_order_row.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CompletedBody extends StatelessWidget {
   const CompletedBody({super.key});
@@ -26,8 +27,8 @@ class CompletedBody extends StatelessWidget {
             itemBuilder: (context, index) {
               final completedListOrder = completeOrders[index];
               return OrderWidget(
-                orderStatusWidget: const StatusOrderRow(
-                    icon: SvgAssets.completedIcon, title: "Order delivered"),
+                orderStatusWidget:  StatusOrderRow(
+                    icon: SvgAssets.completedIcon, title:S.of(context).orderCompleted),
                 item: completedListOrder.items.first,
                 date: completedListOrder.orderDate ?? "",
                 orderEntity: completedListOrder,

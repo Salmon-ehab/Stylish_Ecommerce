@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
-import 'package:shop_ecommerce/core/utils/app_color.dart';
-import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
-import 'package:shop_ecommerce/feature/auth/presentation/view/get_start_view.dart';
-import 'package:shop_ecommerce/feature/my_orders/presentation/views/my_order_view.dart';
-import 'package:shop_ecommerce/feature/profile/presentation/views/my_profile_view.dart';
+import 'package:shop_ecommerce/feature/profile/presentation/views/widgets/profile_widget/profile_log_out_widget.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/views/widgets/profile_widget/profile_tabs_widget.dart';
-import 'package:shop_ecommerce/feature/my_favorite/presentation/views/favorite_view.dart';
-import 'package:shop_ecommerce/feature/settings/presentation/views/setting_view.dart';
+import '../../../../../../generated/l10n.dart';
 
 class ProfileTabs extends StatelessWidget {
   const ProfileTabs({super.key});
@@ -22,51 +16,29 @@ class ProfileTabs extends StatelessWidget {
         const SizedBox(height: 40),
         ProfileTabsWidget(
             iconPath: SvgAssets.myProfileIcon,
-            tabTitle: "My Profile",
+            tabTitle: S.of(context).myProfile,
             onTap: () {
-              MyNavigator.goTo(screen: () => const MyProfileView());
+              MyNavigator.goTo(context, Routes.myProfileView);
             }),
         ProfileTabsWidget(
             iconPath: SvgAssets.myOrdersIcon,
-            tabTitle: "My Orders",
+            tabTitle: S.of(context).myOrders,
             onTap: () {
-              MyNavigator.goTo(screen: () => const MyOrderView());
+              MyNavigator.goTo(context, Routes.myOrderView);
             }),
         ProfileTabsWidget(
             iconPath: SvgAssets.myFavoritesIcon,
-            tabTitle: "My Favorites",
+            tabTitle: S.of(context).myfavorites,
             onTap: () {
-              MyNavigator.goTo(screen: () => const FavoriteView());
+              MyNavigator.goTo(context, Routes.myFavoriteView);
             }),
         ProfileTabsWidget(
             iconPath: SvgAssets.settingIcon,
-            tabTitle: "Settings",
+            tabTitle: S.of(context).settings,
             onTap: () {
-              MyNavigator.goTo(screen: () => const SettingView());
+              MyNavigator.goTo(context, Routes.settingView);
             }),
-        const SizedBox(height: 20),
-        const Divider(color: AppColor.appNameColor),
-        const SizedBox(height: 42),
-        InkWell(
-          onTap: () {
-            MyNavigator.goToOff(
-                screen: () => const GetStartView(), isReplaceOffAll: true);
-          },
-          child: Row(
-            children: [
-              Transform.rotate(
-                angle: Intl.defaultLocale == 'ar' ? 3.14 : 0,
-                child: SvgPicture.asset(
-                  SvgAssets.logoutIcon,
-                  height: 24,
-                  width: 24,
-                ),
-              ),
-              const SizedBox(width: 18),
-              const Text("Log Out", style: Styles.text18W500),
-            ],
-          ),
-        ),
+        const ProfileLogOutWidget()
       ],
     );
   }

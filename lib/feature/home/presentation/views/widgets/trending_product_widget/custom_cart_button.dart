@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
+import 'package:shop_ecommerce/core/helper/app_snack_bar.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
-import 'package:shop_ecommerce/feature/cart/presentation/views/cart_view.dart';
 import 'package:shop_ecommerce/feature/home/data/models/product_model.dart';
 import 'package:shop_ecommerce/feature/home/presentation/manager/quantity_cubit/quantity_cubit.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CustomCartButton extends StatelessWidget {
   final ProductModel productModel;
@@ -19,17 +21,11 @@ class CustomCartButton extends StatelessWidget {
       onTap: () {
         final quantity = QuantityCubit.get(context).state;
         CartCubit.get(context).addToCart(productModel, quantity: quantity);
-          ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              '${quantity}x ${productModel.name ?? 'Item'} added to cart!',
-              style: const TextStyle(color:AppColor.appNameColor),
-            ),
-            backgroundColor: AppColor.pinkColor, // ممكن تعدلي اللون
-            duration: const Duration(seconds: 2),
-          ),
-        );
-        MyNavigator.goTo(screen: () => const CartView());
+        AppSnackBar.showSuccess(
+            context: context,
+            message:
+                '${quantity}x ${productModel.name ?? 'Item'} added to cart!');
+        MyNavigator.goTo(context, Routes.cartView);
       },
       child: Container(
         height: 52,
@@ -47,8 +43,8 @@ class CustomCartButton extends StatelessWidget {
               width: 24,
             ),
             const SizedBox(width: 14),
-            const Text(
-              "Add To Cart",
+            Text(
+              S.of(context).addtoCart,
               style: Styles.text15W600,
             ),
           ],

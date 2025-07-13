@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
-import 'package:shop_ecommerce/feature/auth/presentation/view/get_start_view.dart';
 import 'package:shop_ecommerce/feature/splash_screen/data/onboarding_data/onboarding_content.dart';
 import 'package:shop_ecommerce/feature/splash_screen/data/onboarding_data/onboarding_model.dart';
 import 'package:shop_ecommerce/feature/splash_screen/presentation/manager/onboarding_cubit.dart';
@@ -45,8 +45,7 @@ class OnboardingNavigationText extends StatelessWidget {
         else
           TextButton(
             onPressed: () {
-              MyNavigator.goToOff(
-                  screen: () => const GetStartView(), isReplaceOffAll: true);
+              MyNavigator.goToOffAll(context, Routes.getStartView);
             },
             child: Text(
               S.of(context).GetStarted,

@@ -10,6 +10,7 @@ import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart
 import 'package:shop_ecommerce/feature/cart/presentation/views/widgets/cart_shop_item_body.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/views/widgets/custom_salary_cart.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CartBody extends StatelessWidget {
   const CartBody({super.key});
@@ -43,7 +44,7 @@ class CartBody extends StatelessWidget {
                 SliverPadding(
                   padding: const EdgeInsetsDirectional.only(start: 17),
                   sliver: SliverToBoxAdapter(
-                    child: Text("Shopping List",
+                    child: Text(S.of(context).shoppingList,
                         style: Styles.text14W600
                             .copyWith(color: AppColor.blackColor)),
                   ),

@@ -6,6 +6,7 @@ import 'package:shop_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:shop_ecommerce/feature/settings/data/delete_user_repo/delete_user_repo_imple.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/delete_user_cubit/delete_user_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/views/widgets/setting_body.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({super.key});
@@ -15,9 +16,9 @@ class SettingView extends StatelessWidget {
     return BlocProvider(
       create: (context) => DeleteUserCubit(
           DeleteUserRepoImple(apiConsumer: DioConsumer(dio: Dio()))),
-      child: const Scaffold(
-        appBar: CustomAppbar(title: "settings"),
-        body: SettingBody(),
+      child:  Scaffold(
+        appBar: CustomAppbar(title: S.of(context).setting),
+        body:const SettingBody(),
       ),
     );
   }

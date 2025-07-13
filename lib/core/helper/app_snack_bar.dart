@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppSnackBar {
+  
   static void showSuccess({
     required BuildContext context,
     required String message,
-    Duration duration = const Duration(seconds: 2),
+    Duration duration = const Duration(seconds: 3),
   }) {
     _showSnackBar(
       context: context,

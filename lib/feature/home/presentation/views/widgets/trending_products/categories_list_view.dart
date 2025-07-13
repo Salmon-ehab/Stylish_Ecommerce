@@ -75,7 +75,7 @@ class CategoriesListView extends StatelessWidget {
           return const SizedBox(
             height: 75,
             width: double.infinity,
-            child: Center(child: Text("Please wait...")),
+            child: Center(child: Text("UnExpected...")),
           );
         },
       ),

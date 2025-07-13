@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
 import 'package:shop_ecommerce/feature/search/presentation/manager/search_cubit.dart';
-import 'package:shop_ecommerce/feature/search/presentation/views/search_view.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class SearchWidget extends StatelessWidget {
   final bool? readOnly;
@@ -37,7 +38,7 @@ class SearchWidget extends StatelessWidget {
           },
           onTap: () async {
             if (readOnly == true) {
-              await MyNavigator.goTo(screen: () => const SearchView());
+              await MyNavigator.goTo(context, Routes.searchView);
             }
             mySearchCubit.clearTextEditingController();
           },
@@ -52,7 +53,7 @@ class SearchWidget extends StatelessWidget {
               width: 16,
               fit: BoxFit.scaleDown,
             ),
-            hintText: 'Search any Product..',
+            hintText: S.of(context).searchAnyproduct,
             hintStyle: const TextStyle(
               color: AppColor.grey5,
               fontSize: 14,
@@ -63,45 +64,3 @@ class SearchWidget extends StatelessWidget {
         ));
   }
 }
-
-
-
-
-
-
-
-
-      // showSearch(
-      //         context: context,
-      //         delegate: SearchPage<CustomProductWidget>(
-      //           items:const [
-      //             CustomProductWidget(),
-      //             CustomProductWidget(),
-      //             CustomProductWidget(),
-      //             CustomProductWidget(),
-      //             CustomProductWidget(),
-      //             CustomProductWidget(),
-      //           ],
-      //           // searchLabel: 'Search . . . ',
-      //           barTheme: Theme.of(context).copyWith(
-      //             appBarTheme: const AppBarTheme(
-      //               elevation: 0,
-      //               backgroundColor: AppColor.backGroundColor,
-      //               actionsIconTheme: IconThemeData(
-                      
-      //               ),
-      //               iconTheme: IconThemeData(
-                      
-      //                 color: AppColor.blackColor,
-      //               ),
-      //               titleTextStyle: Styles.text18W600,
-      //               centerTitle: true
-      //             ),
-      //           ),
-      //        //   suggestion: const Center(child: Text('Search for a task')),
-      //           failure: const Center(child: Text('No result')),
-      //           filter: (item) => [item.toString()],
-      //           builder: (item) =>const CustomProductWidget(),
-                
-      //         ),
-      //       );

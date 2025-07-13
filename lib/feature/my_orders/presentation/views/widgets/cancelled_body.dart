@@ -6,6 +6,7 @@ import 'package:shop_ecommerce/feature/my_orders/presentation/manager/get_order_
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/empty_orders_body.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/order_widget.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/status_order_row.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CancelledBody extends StatelessWidget {
   const CancelledBody({super.key});
@@ -26,8 +27,8 @@ class CancelledBody extends StatelessWidget {
             itemBuilder: (context, index) {
               final canceledOrder = cancelOrders[index];
               return OrderWidget(
-                orderStatusWidget: const StatusOrderRow(
-                    icon: SvgAssets.cancelledIcon, title: "Order Canceled"),
+                orderStatusWidget:  StatusOrderRow(
+                    icon: SvgAssets.cancelledIcon, title: S.of(context).orderCanceled),
                 item: canceledOrder.items.first,
                 date: canceledOrder.orderDate ?? '', orderEntity: canceledOrder,
               );

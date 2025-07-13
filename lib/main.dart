@@ -1,10 +1,10 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
+import 'package:shop_ecommerce/core/go_route/app_router.dart';
 import 'package:shop_ecommerce/core/network/dio_consumer.dart';
+import 'package:shop_ecommerce/core/services/service_locator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/constants/constant_fonts.dart';
 import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
@@ -15,23 +15,20 @@ import 'package:shop_ecommerce/feature/search/presentation/manager/search_cubit.
 import 'package:shop_ecommerce/feature/search/presentation/views/widgets/search_widget.dart/search_body.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_state.dart';
-import 'package:shop_ecommerce/feature/splash_screen/presentation/views/splash_view.dart';
 import 'package:shop_ecommerce/generated/l10n.dart';
 import 'core/cache/cache_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-
+  await setUpServiceLocator();
   final languageCubit = LanguageCubit();
   languageCubit.getSavedLanguage();
 
   runApp(
     BlocProvider(
       create: (_) => languageCubit,
-      child: DevicePreview(builder: (_) {
-        return const ShopApp();
-      }),
+      child: const ShopApp(),
     ),
   );
 }
@@ -57,8 +54,8 @@ class ShopApp extends StatelessWidget {
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
-          print(state.locale);
-          return GetMaterialApp(
+          return MaterialApp.router(
+            routerConfig: AppRouter.router,
             locale: state.locale,
             supportedLocales: S.delegate.supportedLocales,
             localizationsDelegates: const [
@@ -74,7 +71,6 @@ class ShopApp extends StatelessWidget {
               fontFamily: Constants.appFont,
               useMaterial3: true,
             ),
-            home: const SplashView(),
           );
         },
       ),

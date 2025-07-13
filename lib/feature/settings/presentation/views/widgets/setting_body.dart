@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_ecommerce/core/cache/cache_helper.dart';
 import 'package:shop_ecommerce/core/cache/cache_key.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
+import 'package:shop_ecommerce/core/helper/app_snack_bar.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
-import 'package:shop_ecommerce/feature/auth/presentation/view/get_start_view.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/delete_user_cubit/delete_user_cubit.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/delete_user_cubit/delete_user_state.dart';
 import 'package:shop_ecommerce/feature/settings/presentation/manager/language_manager/language_cubit.dart';
@@ -14,29 +15,20 @@ import 'package:shop_ecommerce/generated/l10n.dart';
 
 import 'language_switch.dart';
 
-class SettingBody extends StatefulWidget {
+class SettingBody extends StatelessWidget {
   const SettingBody({super.key});
 
-  @override
-  State<SettingBody> createState() => _SettingBodyState();
-}
-
-class _SettingBodyState extends State<SettingBody> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<DeleteUserCubit, DeleteUserState>(
       listener: (context, state) async {
         if (state is DeleteUserErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
-          );
+          AppSnackBar.showError(context: context, message: state.error);
         } else if (state is DeleteUserSuccessState) {
           await CacheHelper.saveData(key: CacheKey.accessToken, value: "");
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("User Deleted successfully")),
-          );
-          MyNavigator.goToOff(
-              screen: const GetStartView(), isReplaceOffAll: true);
+          AppSnackBar.showSuccess(
+              context: context, message: "User Deleted successfully");
+          MyNavigator.goToOffAll(context, Routes.getStartView);
         }
       },
       child: Padding(
@@ -47,37 +39,21 @@ class _SettingBodyState extends State<SettingBody> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Text(S.of(context).language, style: Styles.text18W500),
+                Text(S.of(context).language, style: Styles.text18W500),
                 BlocBuilder<LanguageCubit, LanguageState>(
                   builder: (context, state) {
                     final cubit = LanguageCubit.get(context);
-                  print("lang:${state.locale.languageCode}");
                     return LanguageSwitcher(
                       isEnglishSelected: state.locale.languageCode == 'en',
                       onToggle: () => cubit.toggleLanguage(),
                     );
                   },
                 )
-
-                // BlocBuilder<LanguageCubit, LanguageState>(
-                //     builder: (context, state) {
-                //   final isEnglish = state.locale.languageCode == 'en';
-                //   print("salmaaaaa:$isEnglish");
-                //   print("salmaaaaa:${state.locale.languageCode}");
-
-                //   return LanguageSwitcher(
-                //     isEnglishSelected: isEnglish,
-                //     onToggle: () {
-                //       final newLang = isEnglish ? 'ar' : 'en';
-                //       LanguageCubit.get(context).changeLanguage(newLang);
-                //     },
-                //   );
-                // }),
               ],
             ),
             const Spacer(),
             CustomButton(
-                label: "Delete Account",
+                label: S.of(context).deleteAccount,
                 onTap: DeleteUserCubit.get(context).deleteUserI)
           ],
         ),

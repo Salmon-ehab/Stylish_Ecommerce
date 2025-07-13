@@ -7,6 +7,7 @@ import 'package:shop_ecommerce/feature/cart/presentation/manager/cart_cubit/cart
 import 'package:shop_ecommerce/feature/check_out/data/repo/place_order_repo_imple.dart';
 import 'package:shop_ecommerce/feature/check_out/presentation/manager/place_order_cubit/place_order_cubit.dart';
 import 'package:shop_ecommerce/feature/check_out/presentation/views/widget/check_out_widgets/check_out_body.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CheckOutView extends StatelessWidget {
   const CheckOutView({super.key});
@@ -14,7 +15,7 @@ class CheckOutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbar(title: "Checkout"),
+      appBar:  CustomAppbar(title:S.of(context).checkout),
       body: BlocProvider(
           create: (_) => PlaceOrderCubit(
               PlaceOrderRepoImple(

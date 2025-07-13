@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop_ecommerce/core/cache/cache_helper.dart';
 import 'package:shop_ecommerce/core/cache/cache_key.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
-import 'package:shop_ecommerce/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:shop_ecommerce/feature/auth/presentation/view/widgets/get_start_widgets/custom_get_start_button.dart';
 import 'package:shop_ecommerce/generated/l10n.dart';
 
@@ -39,7 +39,7 @@ class GetStartButtonsWidget extends StatelessWidget {
             fontSize: 23,
             onTap: () async {
               await CacheHelper.saveData(key: CacheKey.firstTime, value: false);
-              MyNavigator.goTo(screen: () => const SignInView());
+              MyNavigator.goTo(context,Routes.signInView);
             },
           ),
         ),

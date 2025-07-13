@@ -1,39 +1,24 @@
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 abstract class MyNavigator {
-  static goToOff(
-      {required screen,
-      bool isReplaceOffAll = false,
-      Transition transition = Transition.rightToLeftWithFade,
-      Duration? duration}) {
-    if (isReplaceOffAll) {
-      Get.offAll(screen,
-          transition: Intl.defaultLocale == "en"
-              ? Transition.rightToLeftWithFade
-              : Transition.leftToRightWithFade,
-          duration: duration ?? const Duration(seconds: 1));
-    } else {
-      Get.off(screen,
-          transition: Intl.defaultLocale == "en"
-              ? Transition.rightToLeftWithFade
-              : Transition.leftToRightWithFade,
-          duration: duration ?? const Duration(seconds: 1));
-    }
+  static Future<T?> goTo<T>(
+    BuildContext context,
+    String path, {
+    Object? extra,
+  }) async {
+    return await context.push<T>(path, extra: extra);
   }
 
-  static Future<T?>? goTo<T>(
-      {required screen,
-      Transition transition = Transition.rightToLeftWithFade,
-      Duration? duration}) {
-  return  Get.to<T>(screen,
-        transition: Intl.defaultLocale == "en"
-            ? Transition.rightToLeftWithFade
-            : Transition.leftToRightWithFade,
-        duration: duration ?? const Duration(seconds: 1));
+  static void goToOff(BuildContext context, String path, {Object? extra}) {
+    context.replace(path, extra: extra);
   }
 
-  static pop(context) {
-    Get.back();
+  static void goToOffAll(BuildContext context, String path, {Object? extra}) {
+    context.go(path, extra: extra);
+  }
+
+  static void pop<T>(BuildContext context, [T? result]) {
+    context.pop<T>(result);
   }
 }

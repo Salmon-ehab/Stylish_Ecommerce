@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
-import 'package:shop_ecommerce/feature/cart/presentation/views/cart_view.dart';
 import 'package:shop_ecommerce/feature/home/presentation/views/home_view.dart';
 import 'package:shop_ecommerce/feature/home/presentation/views/trending_view.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/views/profile_view.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({super.key});
@@ -28,7 +29,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            MyNavigator.goTo(screen: ()=>const CartView());
+            MyNavigator.goTo(context, Routes.cartView);
           },
           backgroundColor: AppColor.appNameColor,
           shape: const CircleBorder(),
@@ -60,7 +61,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                   BlendMode.srcIn,
                 ),
               ),
-              label: 'Home',
+              label: S.of(context).home,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -72,7 +73,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                   BlendMode.srcIn,
                 ),
               ),
-              label: 'Items',
+              label: S.of(context).itemhome,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -84,7 +85,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                   BlendMode.srcIn,
                 ),
               ),
-              label: 'Profile',
+              label:  S.of(context).profile,
             ),
           ],
         ),

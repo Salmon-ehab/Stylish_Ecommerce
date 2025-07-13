@@ -11,23 +11,25 @@ class CustomAppLogo extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      backgroundColor: AppColor.white1,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: AppColor.white1,
+        automaticallyImplyLeading: false,
         title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          SvgAssets.appLogo,
-          height: 31,
-          width: 38,
-          fit: BoxFit.fill,
-        ),
-        const SizedBox(width: 5),
-        Text("Stylish",
-            style: Styles.text18W700.copyWith(fontFamily: Constants.libreFont))
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              SvgAssets.appLogo,
+              height: 31,
+              width: 38,
+              fit: BoxFit.fill,
+            ),
+            const SizedBox(width: 5),
+            Text("Stylish",
+                style:
+                    Styles.text18W700.copyWith(fontFamily: Constants.libreFont))
+          ],
+        ));
   }
 
   @override

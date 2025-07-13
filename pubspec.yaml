@@ -57,8 +57,12 @@ dependencies:
   skeletonizer: ^1.4.3
   lottie: ^3.2.0
   get_it: ^8.0.3
+  flutter_launcher_icons: ^0.13.1
 
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/png/play_store_512.png" 
 
 
 dev_dependencies:

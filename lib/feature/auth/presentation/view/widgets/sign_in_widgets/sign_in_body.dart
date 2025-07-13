@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_ecommerce/core/constants/global_flag.dart';
+import 'package:shop_ecommerce/core/go_route/routes.dart';
 import 'package:shop_ecommerce/core/helper/app_snack_bar.dart';
 import 'package:shop_ecommerce/core/helper/my_navigator.dart';
 import 'package:shop_ecommerce/core/helper/my_responsive.dart';
 import 'package:shop_ecommerce/core/helper/validator/validator_form_field.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/svg.dart';
-import 'package:shop_ecommerce/core/widgets/bottom_nav_bar.dart';
 import 'package:shop_ecommerce/core/widgets/custom_button.dart';
 import 'package:shop_ecommerce/core/widgets/custom_text_form_field.dart';
 import 'package:shop_ecommerce/feature/auth/presentation/manager/sign_in_cubit/sign_in_cubit.dart';
@@ -25,13 +24,11 @@ class SignInBody extends StatelessWidget {
         child: BlocConsumer<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
-          isNavigatedToLogin = false;
           UserCubit.get(context).getUserData(user: state.userResponseApi.user!);
-          MyNavigator.goToOff(
-              screen: () => const BottomNavBarWidget(), isReplaceOffAll: true);
+          MyNavigator.goToOff(context, Routes.bottomNavBarView);
           AppSnackBar.showSuccess(
               context: context,
-              message: "Successfully logged in. Let's get started!");
+              message: "Successfully logged in.");
         }
         if (state is SignInFailureState) {
           AppSnackBar.showError(context: context, message: state.error);

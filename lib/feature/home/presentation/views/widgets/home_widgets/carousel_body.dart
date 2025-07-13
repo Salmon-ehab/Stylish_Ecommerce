@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shop_ecommerce/core/utils/app_color.dart';
 import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/feature/home/data/models/slider_model.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class CarouselBody extends StatelessWidget {
-  const CarouselBody(
-      {super.key, required this.sliderModel});
+  const CarouselBody({super.key, required this.sliderModel});
   final SliderModel sliderModel;
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class CarouselBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Shop Now',
+                    S.of(context).shopNow,
                     style: Styles.text12W600.copyWith(color: AppColor.white),
                   ),
                   const SizedBox(width: 4),

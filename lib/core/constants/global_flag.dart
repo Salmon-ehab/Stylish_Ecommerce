@@ -1,1 +1,1 @@
-bool isNavigatedToLogin = false;
+// bool isNavigatedToLogin = false;

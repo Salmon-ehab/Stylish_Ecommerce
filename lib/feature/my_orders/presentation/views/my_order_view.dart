@@ -6,6 +6,7 @@ import 'package:shop_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:shop_ecommerce/feature/my_orders/data/repo/get_order_repo/get_order_repo_imple.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/manager/get_order_cubit/get_order_cubit.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/my_order_body.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class MyOrderView extends StatelessWidget {
   const MyOrderView({super.key});
@@ -13,8 +14,8 @@ class MyOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppbar(
-          title: "My Orders",
+        appBar:  CustomAppbar(
+          title: S.of(context).myOrders,
         ),
         body: BlocProvider(
             create: (_) => GetOrderCubit(

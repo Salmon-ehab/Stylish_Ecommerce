@@ -5,6 +5,7 @@ import 'package:shop_ecommerce/core/utils/styles.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/active_body.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/cancelled_body.dart';
 import 'package:shop_ecommerce/feature/my_orders/presentation/views/widgets/completed_body.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class MyOrderBody extends StatefulWidget {
   const MyOrderBody({super.key});
@@ -17,7 +18,7 @@ class _MyOrderBodyState extends State<MyOrderBody> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
-  List<String> tabs = ["Active", "Cancelled", "Completed"];
+  List<String> tabs = [S.current.active, S.current.canceled, S.current.completed];
 
   void _onTabTap(int index) {
     setState(() {

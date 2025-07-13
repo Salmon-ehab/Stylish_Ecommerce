@@ -6,6 +6,7 @@ import 'package:shop_ecommerce/core/widgets/custom_shopping_item.dart';
 import 'package:shop_ecommerce/core/widgets/custom_shopping_item_details.dart';
 import 'package:shop_ecommerce/feature/my_orders/data/models/order_entity.dart';
 import 'package:shop_ecommerce/feature/order_details.dart/presentation/views/widgets/order_details_salary.dart';
+import 'package:shop_ecommerce/generated/l10n.dart';
 
 class OrderDetailsBody extends StatelessWidget {
   const OrderDetailsBody({super.key, required this.orderEntity});
@@ -15,11 +16,11 @@ class OrderDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     late String orderStatus;
     if (orderEntity.status == 0) {
-      orderStatus = "Active";
+      orderStatus = S.current.active;
     } else if (orderEntity.status == 1) {
-      orderStatus = "Completed";
+      orderStatus = S.current.completed;
     } else if (orderEntity.status == 2) {
-      orderStatus = "Canceled";
+      orderStatus = S.current.canceled;
     }
 
     return Padding(
@@ -35,7 +36,7 @@ class OrderDetailsBody extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Order No.${orderEntity.id}",
+                          Text("${S.of(context).orderNo}.${orderEntity.id}",
                               style: Styles.text20W500),
                           Text(
                             "${orderEntity.orderDate}",
@@ -43,6 +44,7 @@ class OrderDetailsBody extends StatelessWidget {
                           )
                         ],
                       ),
+                      const SizedBox(width: 3),
                       Text(orderStatus,
                           style: Styles.text20W500
                               .copyWith(color: AppColor.appNameColor)),

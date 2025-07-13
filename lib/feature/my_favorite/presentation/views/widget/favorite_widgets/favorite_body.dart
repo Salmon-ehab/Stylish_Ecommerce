@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:shop_ecommerce/core/network/dio_consumer.dart';
 import 'package:shop_ecommerce/core/widgets/custom_product_widget.dart';
+import 'package:shop_ecommerce/feature/home/presentation/views/widgets/shimmer_product_widget.dart';
 import 'package:shop_ecommerce/feature/profile/data/repo/get_data_repo/get_data_imple.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_cubit.dart';
 import 'package:shop_ecommerce/feature/profile/presentation/manager/user_cubit/user_state.dart';
@@ -20,29 +20,7 @@ class FavoriteBody extends StatelessWidget {
         child: BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
             if (state is UserLoadingState) {
-              return GridView.builder( 
-                padding: EdgeInsets.zero, 
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  childAspectRatio: 0.55,
-                ),
-                itemCount: 6,
-                itemBuilder: (BuildContext context, int index) {
-                  return Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  );
-                },
-              );
+              return const ShimmerProductWidget();
             } else if (state is UserSuccessState) {
               if (state.userModel.favoriteProducts!.isEmpty) {
                 return const Center( 
